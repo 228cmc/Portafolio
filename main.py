@@ -1,6 +1,6 @@
 import sqlite3
 from flights import add_flight, view_flights_by_criteria, update_flight
-from pilots import assign_pilot_to_flight
+from pilots import assign_pilot_to_flight, view_pilot_schedule
 from destinations import manage_destinations
 
 def main():
@@ -13,8 +13,9 @@ def main():
         print("2. View Flights by Criteria")
         print("3. Update Flight Information")
         print("4. Assign Pilot to Flight")
-        print("5. View/Update Destination Information")
-        print("6. Exit")
+        print("5. View Pilot Schedule")
+        print("6. View/Update Destination Information")
+        print("7. Exit")
 
         choice = input("Choose an option: ")
 
@@ -27,8 +28,10 @@ def main():
         elif choice == "4":
             assign_pilot_to_flight(cursor)
         elif choice == "5":
-            manage_destinations(cursor)
+            view_pilot_schedule(cursor)
         elif choice == "6":
+            manage_destinations(cursor)
+        elif choice == "7":
             print("Exiting...")
             break
         else:
@@ -40,3 +43,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

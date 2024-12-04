@@ -12,19 +12,33 @@ def create_tables():
     """
     Creates the necessary tables in the flight_management.db database.
     Exits if tables already exist and contain data.
+
+    The tables created are:
+
+    1. **Destinations**:
+        - Columns: DestinationID, City, Country, AirportID.
+
+    2. **Aircrafts**:
+        - Columns: AircraftID, FuelNeed, Manufacturer, CapacityPersons.
+
+    3. **Pilots**:
+        - Columns: PilotID, FirstName, LastName, LicenseNumber, Seniority, EmergencyContact.
+
+    4. **Flights**:
+        - Columns: FlightID, DestinationID, AircraftID, PilotID, DepartureTime, ArrivalTime, Status.
     """
     connection = sqlite3.connect("flight_management.db")
     cursor = connection.cursor()
 
-    # Verificar si ya existen tablas con datos
+    # we verify  if there are existing tables
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
     existing_tables = cursor.fetchall()
     if existing_tables:
-        print("Tables already exist. Exiting setup.")
+        print("exiting... there is already data")
         connection.close()
         return
 
-    # Crear tabla Destinations
+    # Create table destinations
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS Destinations (
         DestinationID INTEGER PRIMARY KEY,
@@ -34,7 +48,7 @@ def create_tables():
     );
     """)
 
-    # Crear tabla Aircrafts
+    # crear tabla aircrafts
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS Aircrafts (
         AircraftID INTEGER PRIMARY KEY,
@@ -44,7 +58,7 @@ def create_tables():
     );
     """)
 
-    # Crear tabla Pilots
+    # create table pilots
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS Pilots (
         PilotID INTEGER PRIMARY KEY,
@@ -74,7 +88,7 @@ def create_tables():
 
     connection.commit()
     connection.close()
-    print("Tables created successfully.")
+    print("tables were created")
 
 
 def view_tables_and_content():
@@ -90,13 +104,13 @@ def view_tables_and_content():
         tables = cursor.fetchall()
 
         if not tables:
-            print("No tables found in the database.")
+            print("no tables")
             return
 
-        print("\n--- Tables in the Database ---")
+        print("\n-tables in the database:")
         for table in tables:
             table_name = table[0]
-            print(f"\nTable: {table_name}")
+            print(f"\ntable: {table_name}")
 
             # Mostrar contenido de cada tabla
             cursor.execute(f"SELECT * FROM {table_name};")
@@ -106,7 +120,7 @@ def view_tables_and_content():
                 for row in rows:
                     print(row)
             else:
-                print("This table is empty.")
+                print("table empty")
     except sqlite3.Error as e:
         print(f"Error: {e}")
     finally:
@@ -123,7 +137,7 @@ def populate_tables():
 
     # Verificar si ya hay datos en una tabla clave (e.g., Destinations)
     if not is_table_empty(cursor, "Destinations"):
-        print("Tables already populated. Exiting.")
+        print("exiting... tables were already populated")
         connection.close()
         return
 
@@ -143,7 +157,7 @@ def populate_tables():
         (9, 'Asunción', 'Paraguay', 'ASU'),
         (10, 'Brasilia', 'Brasil', 'BSB')
     ])
-    print("Destinations table populated.")
+    print("destinations populated")
 
     # Insertar datos en Aircrafts
     cursor.executemany("""
@@ -161,7 +175,7 @@ def populate_tables():
         (9, 2000.0, 'Embraer 190', 98),
         (10, 2400.0, 'Cessna 208', 14)
     ])
-    print("Aircrafts table populated.")
+    print("aircrafts populated")
 
     # Insertar datos en Pilots
     cursor.executemany("""
@@ -178,7 +192,7 @@ def populate_tables():
         (8, 'Rosa', 'Perdomo', 'L0008', 5, 'Carlos Perdomo'),
         (9, 'Laura', 'Lozano', 'L0009', 11, 'Pedro Lozano')
     ])
-    print("Pilots table populated.")
+    print("pilots populated")
 
     # Insertar datos en Flights
     cursor.executemany("""
@@ -196,11 +210,11 @@ def populate_tables():
         (9, 9, 9, 9, '2024-12-08 10:00:00', '2024-12-08 13:00:00', 'On Time'),
         (10, 10, 10, 1, '2024-12-09 12:00:00', '2024-12-09 15:00:00', 'On Time')
     ])
-    print("Flights table populated.")
+    print("flights populated")
 
     connection.commit()
     connection.close()
-    print("Tables populated successfully.")
+    print("all tables were populated good")
 
 if __name__ == "__main__":
     create_tables()
