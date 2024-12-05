@@ -14,8 +14,8 @@ def manage_destination(cursor):
             print("\ndestination")
             for destination in destination:
                 print(destination)
-        except Exception as e:
-            print(f"error: {e}")
+        except :
+            print("error with the request")
     elif choice == "2":
         destination_id = input("type destinationID to uchange: ")
         new_city = input("change new city: ")
@@ -29,7 +29,7 @@ def manage_destination(cursor):
                 WHERE DestinationID = ?;
             """, (new_city, new_country, new_airport_id, destination_id))
             print("Destination updated successfully!")
-        except Exception as e:
-            print(f"error: {e}")
+        except :
+            print(f"error adding the destination please review the data")
     else:
-        print("that option is not allowed. exit to main menu.")
+        print("that option is not allowed now exit to main menu.")

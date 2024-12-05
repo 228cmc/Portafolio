@@ -16,8 +16,8 @@ def add_pilot(cursor):
             VALUES (?, ?, ?, ?, ?, ?);
         """, (pilot_id, first_name, last_name, license_number, seniority, emergency_contact))
         print("the pilot was addded")
-    except Exception as e:
-        print(f"Error: {e}")
+    except :
+        print("Error")
 
 
 def assign_pilot_to_flight(cursor):
@@ -35,8 +35,8 @@ def assign_pilot_to_flight(cursor):
             WHERE FlightID = ?;
         """, (pilot_id, flight_id))
         print("pilot assigned successfully!")
-    except Exception as e:
-        print(f"Error: {e}")
+    except :
+        print("Error:")
 
 def view_pilot_schedule(cursor):
     """
@@ -59,8 +59,8 @@ def view_pilot_schedule(cursor):
                 print(f"flightID: {flight[0]}, destination: {flight[1]}, departure: {flight[2]}, Arrival: {flight[3]}, Status: {flight[4]}")
         else:
             print("no flight assigned to this pilot")
-    except Exception as e:
-        print(f"Error: {e}")
+    except :
+        print("Error")
         #
 
 def delete_pilot(cursor):

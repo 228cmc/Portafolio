@@ -120,8 +120,8 @@ def view_tables_and_content():
                     print(row)
             else:
                 print("table empty")
-    except sqlite3.Error as e:
-        print(f"Error: {e}")
+    except :
+        print("Error")
     finally:
         connection.close()
 
