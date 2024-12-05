@@ -8,16 +8,16 @@ def main():
     cursor = connection.cursor()
 
     while True:
-        print("Flight Management System ---")
-        print("1. Add a New Flight")
-        print("2. View Flights by Criteria")
-        print("3. Update Flight Information")
-        print("4. Assign Pilot to Flight")
-        print("5. View Pilot Schedule")
-        print("6. View/Update Destination Information")
-        print("7. Exit")
+        print("flight Management System ---")
+        print("1. add a new flight")
+        print("2. view flights ")
+        print("3. update Flights")
+        print("4. assign pilot to flight")
+        print("5. view pilot Schedule")
+        print("6. view/Update destination information")
+        print("7. quit")
 
-        choice = input("Choose an option: ")
+        choice = input("pick option: ")
 
         if choice == "1":
             add_flight(cursor)
@@ -32,10 +32,10 @@ def main():
         elif choice == "6":
             manage_destinations(cursor)
         elif choice == "7":
-            print("Exiting...")
+            print("exiting...")
             break
         else:
-            print("Invalid option. Try again.")
+            print(" try again")
 
         connection.commit()
 

@@ -34,8 +34,8 @@ def view_pilot_schedule(cursor):
         if flights:
             print("\n--- Pilot Schedule ---")
             for flight in flights:
-                print(f"FlightID: {flight[0]}, Destination: {flight[1]}, Departure: {flight[2]}, Arrival: {flight[3]}, Status: {flight[4]}")
+                print(f"flightID: {flight[0]}, destination: {flight[1]}, departure: {flight[2]}, Arrival: {flight[3]}, Status: {flight[4]}")
         else:
-            print("No flights assigned to this pilot.")
+            print("no flights assigned to this pilot")
     except Exception as e:
         print(f"Error: {e}")
