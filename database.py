@@ -50,7 +50,9 @@ def create_tables():
         AircraftID INTEGER PRIMARY KEY,
         FuelNeed REAL NOT NULL,
         Manufacturer TEXT NOT NULL,
-        CapacityPersons INTEGER NOT NULL
+        CapacityPersons INTEGER NOT NULL,
+        MaximumSpeed INTEGER NOT NULL
+
     );
     """)
 
@@ -158,19 +160,19 @@ def populate_tables():
 
     # Insertar datos en aircraft
     cursor.executemany("""
-    INSERT INTO aircraft (AircraftID, FuelNeed, Manufacturer, CapacityPersons)
-    VALUES (?, ?, ?, ?);
+    INSERT INTO aircraft (AircraftID, FuelNeed, Manufacturer, CapacityPersons, MaximumSpeed)
+    VALUES (?, ?, ?, ?, ?);
     """, [
-        (1, 2400.0, 'Airbus A320', 150),
-        (2, 3600.0, 'Airbus A350', 300),
-        (3, 3200.0, 'Boeing 777', 396),
-        (4, 2500.0, 'Airbus A380', 555),
-        (5, 1800.0, 'Boeing 727', 189),
-        (6, 2900.0, 'Airbus A330', 277),
-        (7, 2200.0, 'Boeing 737', 162),
-        (8, 2700.0, 'Bombardier CRJ', 90),
-        (9, 2000.0, 'Embraer 190', 98),
-        (10, 2400.0, 'Cessna 208', 14)
+        (1, 2400.0, 'Airbus A320', 150, 300),
+        (2, 3600.0, 'Airbus A350', 300, 400),
+        (3, 3200.0, 'Boeing 777', 396, 300),
+        (4, 2500.0, 'Airbus A380', 555, 200),
+        (5, 1800.0, 'Boeing 727', 189, 150),
+        (6, 2900.0, 'Airbus A330', 277, 300),
+        (7, 2200.0, 'Boeing 737', 162, 200),
+        (8, 2700.0, 'Bombardier CRJ', 90, 100),
+        (9, 2000.0, 'Embraer 190', 98, 200),
+        (10, 2400.0, 'Cessna 208', 14, 150)
     ])
     print("aircraft populated")
 
