@@ -18,7 +18,7 @@ def add_flight(cursor):
             INSERT INTO Flights (DestinationID, AircraftID, PilotID, DepartureTime, ArrivalTime, Status)
             VALUES (?, ?, ?, ?, ?, ?);
         """, (destination_id, aircraft_id, pilot_id, departure_time, arrival_time, status))
-        print("flight added successfully!")
+        print("the flight was added")
     except Exception as e:
         print(f"Error: {e}")
 
@@ -69,7 +69,7 @@ def view_flights_by_criteria(cursor):
         flights = cursor.fetchall()
 
         if flights:
-            print("\n--- Flights Matching Criteria ---")
+            print("\n-flights with the criteria")
             for flight in flights:
                 print(f"""
                 FlightID: {flight[0]},
@@ -81,7 +81,7 @@ def view_flights_by_criteria(cursor):
                 Status: {flight[7]}
                 """)
         else:
-            print("No flights found matching the criteria.")
+            print("no flights found matching the criteria")
     except Exception as e:
         print(f"Error: {e}")
 

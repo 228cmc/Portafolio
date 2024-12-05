@@ -26,13 +26,16 @@ def main():
         elif choice == "3":
             update_flight(cursor)
         elif choice == "4":
-            assign_pilot_to_flight(cursor)
+            add_pilot(cursor)
         elif choice == "5":
-            view_pilot_schedule(cursor)
+            assign_pilot_to_flight(cursor)
         elif choice == "6":
-            manage_destinations(cursor)
+            view_pilot_schedule(cursor)
         elif choice == "7":
+            manage_destinations(cursor)
+        elif choice == "8":
             print("exiting...")
+
             break
         else:
             print(" try again")
