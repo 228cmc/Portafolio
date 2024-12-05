@@ -15,17 +15,13 @@ def create_tables():
 
     The tables created are:
 
-    1. **destination**:
-        - Columns: DestinationID, City, Country, AirportID.
+    1. table destination has the columns destinationID, city, country, airportID.
 
-    2. **aircraft**:
-        - Columns: AircraftID, FuelNeed, Manufacturer, CapacityPersons.
+    2. aircraft table has the  columns aircraftID, fuelNeed, manufacturer, capacityPersons.
 
-    3. **pilot**:
-        - Columns: PilotID, FirstName, LastName, LicenseNumber, Seniority, EmergencyContact.
+    3. pilot tabla has the columns pilotID, firstName, lastName, licenseNumber, seniority, emergencyContact.
 
-    4. **flight**:
-        - Columns: FlightID, DestinationID, AircraftID, PilotID, DepartureTime, ArrivalTime, Status.
+    4. flight table  has the columns flightID, destinationID, aircraftID, pilotID, departureTime, arrivalTime, status.
     """
     connection = sqlite3.connect("flight_management.db")
     cursor = connection.cursor()
