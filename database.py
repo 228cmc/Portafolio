@@ -15,18 +15,18 @@ def create_tables():
 
     The tables created are:
 
-    1. table destination has the columns destinationID, city, country, airportID.
+    1. table destination has the columns destination_id, city, country, airport_id.
 
-    2. aircraft table has the  columns aircraftID, fuelNeed, manufacturer, capacityPersons.
+    2. aircraft table has the columns aircraft_id, fuel_needed, manufacturer, capacity_persons, maximum_speed.
 
-    3. pilot tabla has the columns pilotID, firstName, lastName, licenseNumber, seniority, emergencyContact.
+    3. pilot table has the columns pilot_id, first_name, last_name, license_number, seniority, emergency_contact.
 
-    4. flight table  has the columns flightID, destinationID, aircraftID, pilotID, departureTime, arrivalTime, status.
+    4. flight table has the columns flight_id, origin_id, destination_id, aircraft_id, pilot_id, departure_time, arrival_time, status.
     """
     connection = sqlite3.connect("flight_management.db")
     cursor = connection.cursor()
 
-    # we verify  if there are existing tables
+    # Check if there are existing tables
     cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
     existing_tables = cursor.fetchall()
     if existing_tables:
@@ -37,51 +37,50 @@ def create_tables():
     # Create table destination
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS destination (
-        DestinationID INTEGER PRIMARY KEY,
-        City TEXT NOT NULL,
-        Country TEXT NOT NULL,
-        AirportID TEXT NOT NULL
+        destination_id INTEGER PRIMARY KEY,
+        city TEXT NOT NULL,
+        country TEXT NOT NULL,
+        airport_id TEXT NOT NULL
     );
     """)
 
-    # crear tabla aircraft
+    # Create table aircraft
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS aircraft (
-        AircraftID INTEGER PRIMARY KEY,
-        FuelNeed REAL NOT NULL,
-        Manufacturer TEXT NOT NULL,
-        CapacityPersons INTEGER NOT NULL,
-        MaximumSpeed INTEGER NOT NULL
-
+        aircraft_id INTEGER PRIMARY KEY,
+        fuel_needed REAL NOT NULL,
+        manufacturer TEXT NOT NULL,
+        capacity_persons INTEGER NOT NULL,
+        maximum_speed INTEGER NOT NULL
     );
     """)
 
-    # create table pilot
+    # Create table pilot
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS pilot (
-        PilotID INTEGER PRIMARY KEY,
-        FirstName TEXT NOT NULL,
-        LastName TEXT NOT NULL,
-        LicenseNumber TEXT NOT NULL,
-        Seniority INTEGER NOT NULL,
-        EmergencyContact TEXT NOT NULL
+        pilot_id INTEGER PRIMARY KEY,
+        first_name TEXT NOT NULL,
+        last_name TEXT NOT NULL,
+        license_number TEXT NOT NULL,
+        seniority INTEGER NOT NULL,
+        emergency_contact TEXT NOT NULL
     );
     """)
 
-    # Crear tabla flight
+    # Create table flight
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS flight (
-        FlightID INTEGER PRIMARY KEY,
-        OriginID INTEGER NOT NULL,         
-        DestinationID INTEGER NOT NULL,   
-        AircraftID INTEGER NOT NULL,
-        PilotID INTEGER NOT NULL,
-        DepartureTime DATETIME NOT NULL,
-        ArrivalTime DATETIME NOT NULL,
-        Status TEXT NOT NULL,
-        FOREIGN KEY (DestinationID) REFERENCES destination(DestinationID),
-        FOREIGN KEY (AircraftID) REFERENCES aircraft(AircraftID),
-        FOREIGN KEY (PilotID) REFERENCES pilot(PilotID)
+        flight_id INTEGER PRIMARY KEY,
+        origin_id INTEGER NOT NULL,         
+        destination_id INTEGER NOT NULL,   
+        aircraft_id INTEGER NOT NULL,
+        pilot_id INTEGER NOT NULL,
+        departure_time DATETIME NOT NULL,
+        arrival_time DATETIME NOT NULL,
+        status TEXT NOT NULL,
+        FOREIGN KEY (destination_id) REFERENCES destination(destination_id),
+        FOREIGN KEY (aircraft_id) REFERENCES aircraft(aircraft_id),
+        FOREIGN KEY (pilot_id) REFERENCES pilot(pilot_id)
     );
     """)
 
@@ -98,7 +97,7 @@ def view_tables_and_content():
     cursor = connection.cursor()
 
     try:
-        # Obtener el nombre de todas las tablas
+        # Get the names of all tables
         cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
         tables = cursor.fetchall()
 
@@ -111,7 +110,7 @@ def view_tables_and_content():
             table_name = table[0]
             print(f"table: {table_name}")
 
-            # Mostrar contenido de cada tabla
+            # Display content of each table
             cursor.execute(f"SELECT * FROM {table_name};")
             rows = cursor.fetchall()
 
@@ -120,7 +119,7 @@ def view_tables_and_content():
                     print(row)
             else:
                 print("table empty")
-    except :
+    except:
         print("Error not possible to get information of the tables")
     finally:
         connection.close()
@@ -134,15 +133,15 @@ def populate_tables():
     connection = sqlite3.connect("flight_management.db")
     cursor = connection.cursor()
 
-    # Verificar si ya hay datos en una tabla clave (e.g., destination)
+    # Check if there is already data in a key table (e.g., destination)
     if not is_table_empty(cursor, "destination"):
         print("exiting... tables were already populated")
         connection.close()
         return
 
-    # Insertar datos en destination
+    # Insert data into destination
     cursor.executemany("""
-    INSERT INTO destination (DestinationID, City, Country, AirportID)
+    INSERT INTO destination (destination_id, city, country, airport_id)
     VALUES (?, ?, ?, ?);
     """, [
         (1, 'Bogotá', 'Colombia', 'BOG'),
@@ -158,9 +157,9 @@ def populate_tables():
     ])
     print("destination populated")
 
-    # Insertar datos en aircraft
+    # Insert data into aircraft
     cursor.executemany("""
-    INSERT INTO aircraft (AircraftID, FuelNeed, Manufacturer, CapacityPersons, MaximumSpeed)
+    INSERT INTO aircraft (aircraft_id, fuel_needed, manufacturer, capacity_persons, maximum_speed)
     VALUES (?, ?, ?, ?, ?);
     """, [
         (1, 2400.0, 'Airbus A320', 150, 300),
@@ -176,9 +175,9 @@ def populate_tables():
     ])
     print("aircraft populated")
 
-    # Insertar datos en pilot
+    # Insert data into pilot
     cursor.executemany("""
-    INSERT INTO pilot (PilotID, FirstName, LastName, LicenseNumber, Seniority, EmergencyContact)
+    INSERT INTO pilot (pilot_id, first_name, last_name, license_number, seniority, emergency_contact)
     VALUES (?, ?, ?, ?, ?, ?);
     """, [
         (1, 'Carolina', 'Perez', 'L0001', 10, 'Juan Perez'),
@@ -193,9 +192,9 @@ def populate_tables():
     ])
     print("pilot populated")
 
-    # Insertar datos en flight
+    # Insert data into flight
     cursor.executemany("""
-    INSERT INTO flight (FlightID, OriginID, DestinationID, AircraftID, PilotID, DepartureTime, ArrivalTime, Status)
+    INSERT INTO flight (flight_id, origin_id, destination_id, aircraft_id, pilot_id, departure_time, arrival_time, status)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?);
     """, [
         (1, 1, 2, 1, 1, '2024-12-01 08:00:00', '2024-12-01 10:30:00', 'On Time'),
