@@ -6,6 +6,7 @@ def add_flight(cursor):
 
     #firt we ask for the data to add to the table 
     print(" please type the information of the new flight")
+    origin_id = input("type Origin ID: ")  
     destination_id = input("type destinationID: ")
     aircraft_id = input("type aircraftID: ")
     pilot_id = input("write PilotID: ")
@@ -15,12 +16,12 @@ def add_flight(cursor):
 
     try:
         cursor.execute("""
-            INSERT INTO flight (DestinationID, AircraftID, PilotID, DepartureTime, ArrivalTime, Status)
-            VALUES (?, ?, ?, ?, ?, ?);
-        """, (destination_id, aircraft_id, pilot_id, departure_time, arrival_time, status))
+            INSERT INTO flight (OriginID, DestinationID, AircraftID, PilotID, DepartureTime, ArrivalTime, Status)
+            VALUES (?, ?, ?, ?, ?, ?, ?);
+        """, (origin_id, destination_id, aircraft_id, pilot_id, departure_time, arrival_time, status))  # Ajustado
         print("the flight was added")
-    except Exception as e:
-        print(f"Error: {e}")
+    except :
+        print("Error")
 
 
 
@@ -32,6 +33,7 @@ def view_flight_by_criteria(cursor):
     print("Leave fields empty if you do not want to filter by that criterion.")
 
     # get the data
+    origin_id = input("type Origin ID (or press Enter to continue): ")  # Nueva entrada
     destination_id = input("type Destination ID (or press Enter to continue): ")
     status = input("type Flight Status (e.g., On Time, Delayed, or press Enter to continue): ")
     departure_start = input("type Start of Departure Date Range (YYYY-MM-DD HH:MM:SS) (or press Enter to skip): ")
@@ -39,13 +41,16 @@ def view_flight_by_criteria(cursor):
 
     # query
     query = """
-        SELECT flight.FlightID, destination.City, aircraft.Manufacturer, pilot.FirstName, pilot.LastName, 
+        SELECT flight.FlightID, origin.City AS Origin, destination.City AS Destination,
+               aircraft.Manufacturer, aircraft.MaximumSpeed, pilot.FirstName, pilot.LastName,
                flight.DepartureTime, flight.ArrivalTime, flight.Status
         FROM flight
-        JOIN destination ON flight.DestinationID = destination.DestinationID
+        JOIN destination AS origin ON flight.OriginID = origin.DestinationID
+        JOIN destination AS destination ON flight.DestinationID = destination.DestinationID
         JOIN aircraft ON flight.AircraftID = aircraft.AircraftID
         JOIN pilot ON flight.PilotID = pilot.PilotID
-        WHERE (flight.DestinationID = ? OR ? IS NULL)
+        WHERE (flight.OriginID = ? OR ? IS NULL)
+          AND (flight.DestinationID = ? OR ? IS NULL)
           AND (flight.Status = ? OR ? IS NULL)
           AND (flight.DepartureTime >= ? OR ? IS NULL)
           AND (flight.DepartureTime <= ? OR ? IS NULL)
@@ -53,6 +58,8 @@ def view_flight_by_criteria(cursor):
     
     # stablish none  as parameters 
     params = [
+        origin_id if origin_id else None,
+        origin_id if origin_id else None,
         destination_id if destination_id else None,
         destination_id if destination_id else None,
         status if status else None,
@@ -73,17 +80,19 @@ def view_flight_by_criteria(cursor):
             for flight in flight:
                 print(f"""
                 FlightID: {flight[0]},
-                Destination: {flight[1]},
-                Aircraft: {flight[2]},
-                Pilot: {flight[3]} {flight[4]},
-                Departure: {flight[5]},
-                Arrival: {flight[6]},
-                Status: {flight[7]}
+                Origin: {flight[1]},
+                Destination: {flight[2]},
+                Aircraft: {flight[3]},
+                Speed: {flight[4]} km/h,
+                Pilot: {flight[5]} {flight[6]},
+                Departure: {flight[7]},
+                Arrival: {flight[8]},
+                Status: {flight[9]}
                 """)
         else:
             print("no flight found matching the criteria")
-    except Exception as e:
-        print(f"Error: {e}")
+    except :
+        print("Error")
 
 
 
@@ -104,5 +113,5 @@ def update_flight(cursor):
             WHERE FlightID = ?;
         """, (new_departure_time, new_status, flight_id))
         print("flight updated")
-    except Exception as e:
-        print(f"error: {e}")
+    except :
+        print("error")
