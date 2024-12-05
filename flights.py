@@ -2,7 +2,7 @@ def add_flight(cursor):
     """
     Adds a new flight to the Flights table.
     """
-    print("\n--- please type the information of the new flight ---")
+    print(" please type the information of the new flight ---")
     destination_id = input("type destinationID: ")
     aircraft_id = input("type aircraftID: ")
     pilot_id = input("write PilotID: ")
@@ -23,7 +23,7 @@ def view_flights_by_criteria(cursor):
     """
     Retrieves flights based on specified criteria.
     """
-    print("\n--- View Flights by Criteria ---")
+    print("view Flights by Criteria ---")
     destination_id = input("Enter Destination ID (or press Enter to skip): ")
     status = input("Enter Flight Status (or press Enter to skip): ")
     departure_date = input("Enter Departure Date (YYYY-MM-DD) (or press Enter to skip): ")

@@ -2,7 +2,7 @@ def manage_destinations(cursor):
     """
     Views or updates destination information.
     """
-    print("\nchange destination information")
+    print("change destination information")
     print("1. view all destinations")
     print("2. update a destination")
     choice = input("choose an option: ")
