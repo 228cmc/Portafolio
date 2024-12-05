@@ -28,7 +28,7 @@ def view_flight_by_criteria(cursor):
     """
     Retrieves flight based on fixed criteria, including status, departure time range, or destination.
     """
-    print("\n-see flight by criteria")
+    print("see flight by criteria")
     print("Leave fields empty if you do not want to filter by that criterion.")
 
     # get the data
