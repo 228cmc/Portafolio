@@ -70,7 +70,8 @@ def create_tables():
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS flight (
         FlightID INTEGER PRIMARY KEY,
-        DestinationID INTEGER NOT NULL,
+        OriginID INTEGER NOT NULL,         
+        DestinationID INTEGER NOT NULL,   
         AircraftID INTEGER NOT NULL,
         PilotID INTEGER NOT NULL,
         DepartureTime DATETIME NOT NULL,
