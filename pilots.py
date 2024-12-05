@@ -2,7 +2,7 @@ def assign_pilot_to_flight(cursor):
     """
     Assigns a pilot to an existing flight.
     """
-    print("\n--- Assign Pilot to Flight ---")
+    print("Assign Pilot to Flight ---")
     flight_id = input("Enter Flight ID: ")
     pilot_id = input("Enter Pilot ID: ")
 
@@ -20,7 +20,7 @@ def view_pilot_schedule(cursor):
     """
     Retrieves the schedule of flights for a specific pilot.
     """
-    print("\n--- View Pilot Schedule ---")
+    print(" View Pilot Schedule ---")
     pilot_id = input("Enter Pilot ID: ")
 
     try:

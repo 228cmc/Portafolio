@@ -107,10 +107,10 @@ def view_tables_and_content():
             print("no tables")
             return
 
-        print("\n-tables in the database:")
+        print("-tables in the database:")
         for table in tables:
             table_name = table[0]
-            print(f"\ntable: {table_name}")
+            print(f"table: {table_name}")
 
             # Mostrar contenido de cada tabla
             cursor.execute(f"SELECT * FROM {table_name};")
