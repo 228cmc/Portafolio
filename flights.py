@@ -1,6 +1,6 @@
 def add_flight(cursor):
     """
-    Adds a new flight to the Flights table.
+    Adds a new flight to the flight table.
     """
 
 
@@ -15,7 +15,7 @@ def add_flight(cursor):
 
     try:
         cursor.execute("""
-            INSERT INTO Flights (DestinationID, AircraftID, PilotID, DepartureTime, ArrivalTime, Status)
+            INSERT INTO flight (DestinationID, AircraftID, PilotID, DepartureTime, ArrivalTime, Status)
             VALUES (?, ?, ?, ?, ?, ?);
         """, (destination_id, aircraft_id, pilot_id, departure_time, arrival_time, status))
         print("the flight was added")
@@ -24,11 +24,11 @@ def add_flight(cursor):
 
 
 
-def view_flights_by_criteria(cursor):
+def view_flight_by_criteria(cursor):
     """
-    Retrieves flights based on fixed criteria, including status, departure time range, or destination.
+    Retrieves flight based on fixed criteria, including status, departure time range, or destination.
     """
-    print("\n-see flights by criteria")
+    print("\n-see flight by criteria")
     print("Leave fields empty if you do not want to filter by that criterion.")
 
     # get the data
@@ -39,16 +39,16 @@ def view_flights_by_criteria(cursor):
 
     # query
     query = """
-        SELECT Flights.FlightID, Destinations.City, Aircrafts.Manufacturer, Pilots.FirstName, Pilots.LastName, 
-               Flights.DepartureTime, Flights.ArrivalTime, Flights.Status
-        FROM Flights
-        JOIN Destinations ON Flights.DestinationID = Destinations.DestinationID
-        JOIN Aircrafts ON Flights.AircraftID = Aircrafts.AircraftID
-        JOIN Pilots ON Flights.PilotID = Pilots.PilotID
-        WHERE (Flights.DestinationID = ? OR ? IS NULL)
-          AND (Flights.Status = ? OR ? IS NULL)
-          AND (Flights.DepartureTime >= ? OR ? IS NULL)
-          AND (Flights.DepartureTime <= ? OR ? IS NULL)
+        SELECT flight.FlightID, destination.City, aircraft.Manufacturer, pilot.FirstName, pilot.LastName, 
+               flight.DepartureTime, flight.ArrivalTime, flight.Status
+        FROM flight
+        JOIN destination ON flight.DestinationID = destination.DestinationID
+        JOIN aircraft ON flight.AircraftID = aircraft.AircraftID
+        JOIN pilot ON flight.PilotID = pilot.PilotID
+        WHERE (flight.DestinationID = ? OR ? IS NULL)
+          AND (flight.Status = ? OR ? IS NULL)
+          AND (flight.DepartureTime >= ? OR ? IS NULL)
+          AND (flight.DepartureTime <= ? OR ? IS NULL)
     """
     
     # stablish none  as parameters 
@@ -66,11 +66,11 @@ def view_flights_by_criteria(cursor):
     # Ejecutar consulta
     try:
         cursor.execute(query, params)
-        flights = cursor.fetchall()
+        flight = cursor.fetchall()
 
-        if flights:
-            print("\n-flights with the criteria")
-            for flight in flights:
+        if flight:
+            print("\n-flight with the criteria")
+            for flight in flight:
                 print(f"""
                 FlightID: {flight[0]},
                 Destination: {flight[1]},
@@ -81,7 +81,7 @@ def view_flights_by_criteria(cursor):
                 Status: {flight[7]}
                 """)
         else:
-            print("no flights found matching the criteria")
+            print("no flight found matching the criteria")
     except Exception as e:
         print(f"Error: {e}")
 
@@ -99,10 +99,10 @@ def update_flight(cursor):
 
     try:
         cursor.execute("""
-            UPDATE Flights
+            UPDATE flight
             SET DepartureTime = ?, Status = ?
             WHERE FlightID = ?;
         """, (new_departure_time, new_status, flight_id))
-        print("flights updated")
+        print("flight updated")
     except Exception as e:
         print(f"error: {e}")

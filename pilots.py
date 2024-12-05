@@ -12,7 +12,7 @@ def add_pilot(cursor):
     emergency_contact = input("Enter Emergency Contact: ")
     try:
         cursor.execute("""
-            INSERT INTO Pilots (PilotID, FirstName, LastName, LicenseNumber, Seniority, EmergencyContact)
+            INSERT INTO pilot (PilotID, FirstName, LastName, LicenseNumber, Seniority, EmergencyContact)
             VALUES (?, ?, ?, ?, ?, ?);
         """, (pilot_id, first_name, last_name, license_number, seniority, emergency_contact))
         print("the pilot was addded")
@@ -30,7 +30,7 @@ def assign_pilot_to_flight(cursor):
 
     try:
         cursor.execute("""
-            UPDATE Flights
+            UPDATE flight
             SET PilotID = ?
             WHERE FlightID = ?;
         """, (pilot_id, flight_id))
@@ -40,25 +40,25 @@ def assign_pilot_to_flight(cursor):
 
 def view_pilot_schedule(cursor):
     """
-    Retrieves the schedule of flights for a specific pilot.
+    Retrieves the schedule of flight for a specific pilot.
     """
     print(" view Pilot Schedule ")
     pilot_id = input("enter Pilot ID: ")
 
     try:
         cursor.execute("""
-            SELECT Flights.FlightID, Destinations.City, Flights.DepartureTime, Flights.ArrivalTime, Flights.Status
-            FROM Flights
-            JOIN Destinations ON Flights.DestinationID = Destinations.DestinationID
-            WHERE Flights.PilotID = ?;
+            SELECT flight.FlightID, destination.City, flight.DepartureTime, flight.ArrivalTime, flight.Status
+            FROM flight
+            JOIN destination ON flight.DestinationID = destination.DestinationID
+            WHERE flight.PilotID = ?;
         """, (pilot_id,))
-        flights = cursor.fetchall()
-        if flights:
+        flight = cursor.fetchall()
+        if flight:
             print("\ Pilot Schedule ")
-            for flight in flights:
+            for flight in flight:
                 print(f"flightID: {flight[0]}, destination: {flight[1]}, departure: {flight[2]}, Arrival: {flight[3]}, Status: {flight[4]}")
         else:
-            print("no flights assigned to this pilot")
+            print("no flight assigned to this pilot")
     except Exception as e:
         print(f"Error: {e}")
         #
@@ -72,12 +72,12 @@ def delete_pilot(cursor):
     try:
         cursor.execute(
             """
-            DELETE FROM Pilots
+            DELETE FROM pilot
             WHERE PilotID = ? ;
         """, (pilot_id,))
 
         #set empty the flight without pilot
-        cursor.execute("UPDATE Flights SET PilotID = NULL WHERE PilotID = ?;", (pilot_id,))
+        cursor.execute("UPDATE flight SET PilotID = NULL WHERE PilotID = ?;", (pilot_id,))
 
 
     except:

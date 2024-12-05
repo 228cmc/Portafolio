@@ -1,18 +1,18 @@
-def manage_destinations(cursor):
+def manage_destination(cursor):
     """
     Views or updates destination information.
     """
     print("change destination information")
-    print("1. view all destinations")
+    print("1. view all destination")
     print("2. update a destination")
     choice = input("choose an option: ")
 
     if choice == "1":
         try:
-            cursor.execute("SELECT * FROM Destinations;")
-            destinations = cursor.fetchall()
-            print("\ndestinations")
-            for destination in destinations:
+            cursor.execute("SELECT * FROM destination;")
+            destination = cursor.fetchall()
+            print("\ndestination")
+            for destination in destination:
                 print(destination)
         except Exception as e:
             print(f"error: {e}")
@@ -24,7 +24,7 @@ def manage_destinations(cursor):
 
         try:
             cursor.execute("""
-                UPDATE Destinations
+                UPDATE destination
                 SET City = ?, Country = ?, AirportID = ?
                 WHERE DestinationID = ?;
             """, (new_city, new_country, new_airport_id, destination_id))

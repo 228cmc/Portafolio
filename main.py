@@ -1,7 +1,7 @@
 import sqlite3
-from flights import add_flight, view_flights_by_criteria, update_flight  #import all the functions that I will use from the differnt modules
-from pilots import add_pilot, assign_pilot_to_flight, view_pilot_schedule,delete_pilot
-from destinations import manage_destinations
+from flight import add_flight, view_flight_by_criteria, update_flight  #import all the functions that I will use from the differnt modules
+from pilot import add_pilot, assign_pilot_to_flight, view_pilot_schedule,delete_pilot
+from destination import manage_destination
 
 def main():
     connection = sqlite3.connect("flight_management.db")
@@ -10,8 +10,8 @@ def main():
     while True:
         print("flight Management System ---")
         print("1. add a new flight")
-        print("2. view flights ")
-        print("3. update Flights")
+        print("2. view flight ")
+        print("3. update flight")
         print("4. add pilot")
         print("5. assign pilot to flight")
         print("6. view pilot Schedule")
@@ -24,7 +24,7 @@ def main():
         if choice == "1":
             add_flight(cursor)
         elif choice == "2":
-            view_flights_by_criteria(cursor)
+            view_flight_by_criteria(cursor)
         elif choice == "3":
             update_flight(cursor)
         elif choice == "4":
@@ -37,7 +37,7 @@ def main():
         elif choice == "7":
             delete_pilot(cursor)
         elif choice == "8":
-            manage_destinations(cursor)
+            manage_destination(cursor)
         elif choice == "9":
             print("exiting...")
 
