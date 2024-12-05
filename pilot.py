@@ -15,9 +15,9 @@ def add_pilot(cursor):
             INSERT INTO pilot (PilotID, FirstName, LastName, LicenseNumber, Seniority, EmergencyContact)
             VALUES (?, ?, ?, ?, ?, ?);
         """, (pilot_id, first_name, last_name, license_number, seniority, emergency_contact))
-        print("the pilot was addded")
+        print("the pilot was added")
     except :
-        print("Error")
+        print("Error adding the pilot")
 
 
 def assign_pilot_to_flight(cursor):
@@ -36,7 +36,7 @@ def assign_pilot_to_flight(cursor):
         """, (pilot_id, flight_id))
         print("pilot assigned successfully!")
     except :
-        print("Error:")
+        print("Error assigning the pilot")
 
 def view_pilot_schedule(cursor):
     """
@@ -60,7 +60,7 @@ def view_pilot_schedule(cursor):
         else:
             print("no flight assigned to this pilot")
     except :
-        print("Error")
+        print("Error assigning the flight")
         #
 
 def delete_pilot(cursor):

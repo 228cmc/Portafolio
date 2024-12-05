@@ -121,7 +121,7 @@ def view_tables_and_content():
             else:
                 print("table empty")
     except :
-        print("Error")
+        print("Error not possible to get information of the tables")
     finally:
         connection.close()
 

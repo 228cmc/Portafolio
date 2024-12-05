@@ -15,7 +15,7 @@ def manage_destination(cursor):
             for destination in destination:
                 print(destination)
         except :
-            print("error with the request")
+            print("error with the request of destination information")
     elif choice == "2":
         destination_id = input("type destinationID to uchange: ")
         new_city = input("change new city: ")

@@ -21,7 +21,7 @@ def add_flight(cursor):
         """, (origin_id, destination_id, aircraft_id, pilot_id, departure_time, arrival_time, status))  # Ajustado
         print("the flight was added")
     except :
-        print("Error")
+        print("Error adding the flight please review the information")
 
 
 
@@ -92,7 +92,7 @@ def view_flight_by_criteria(cursor):
         else:
             print("no flight found matching the criteria")
     except :
-        print("Error")
+        print("Error with the request")
 
 
 
@@ -114,4 +114,4 @@ def update_flight(cursor):
         """, (new_departure_time, new_status, flight_id))
         print("flight updated")
     except :
-        print("error")
+        print("error updating the flight")
