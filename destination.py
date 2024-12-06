@@ -1,7 +1,6 @@
 def manage_destination(cursor):
     """
-    Views or updates destination information.
-    """
+    the function allows to view and also updated as desire the destination table    """
     print("change destination information")
     print("1. view all destination")
     print("2. update a destination")
