@@ -13,6 +13,7 @@ def add_pilot(cursor):
     seniority = validate_string("Enter Years of Seniority: ")
     emergency_contact = validate_number("Enter Emergency Contact: ")
     try:
+        
         cursor.execute("""
             INSERT INTO pilot (PilotID, FirstName, LastName, LicenseNumber, Seniority, EmergencyContact)
             VALUES (?, ?, ?, ?, ?, ?);
@@ -44,8 +45,9 @@ def view_pilot_schedule(cursor):
     """
     Retrieves the schedule of flight for a specific pilot.
     """
-    print(" view Pilot Schedule ")
     pilot_id = validate_number("enter Pilot ID: ")
+    print(f"Pilot Schedule of pilot_id:{pilot_id}  ")
+
 
     try:
         cursor.execute("""
@@ -56,7 +58,6 @@ def view_pilot_schedule(cursor):
         """, (pilot_id,))
         flight = cursor.fetchall()
         if flight:
-            print("\ Pilot Schedule ")
             for flight in flight:
                 print(f"flightID: {flight[0]}, destination: {flight[1]}, departure: {flight[2]}, Arrival: {flight[3]}, Status: {flight[4]}")
         else:

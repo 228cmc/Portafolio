@@ -17,6 +17,8 @@ def add_flight(cursor):
     status = validate_choice(["On Time", "Delayed"], "enter flight Status  possible options: On Time, Delayed ")
 
     try:
+        #print(f"OriginID: {origin_id}, DestinationID: {destination_id}, AircraftID: {aircraft_id}, PilotID: {pilot_id}, DepartureTime: {departure_time}, ArrivalTime: {arrival_time}, Status: {status}")
+
         cursor.execute("""
             INSERT INTO flight (OriginID, DestinationID, AircraftID, PilotID, DepartureTime, ArrivalTime, Status)
             VALUES (?, ?, ?, ?, ?, ?, ?);
