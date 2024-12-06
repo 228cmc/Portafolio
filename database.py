@@ -3,7 +3,7 @@ import sqlite3
 def is_table_empty(cursor, table_name):
     """
     the method checks if a table is empty, takes the option given and the name of the table    """
-    cursor.execute(f"")
+    cursor.execute(f"SELECT COUNT(*) FROM {table_name};")
     count = cursor.fetchone()[0]
     return count == 0
 
