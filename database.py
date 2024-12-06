@@ -2,26 +2,25 @@ import sqlite3
 
 def is_table_empty(cursor, table_name):
     """
-    Checks if a given table is empty
-    """
-    cursor.execute(f"SELECT COUNT(*) FROM {table_name};")
+    the method checks if a table is empty, takes the option given and the name of the table    """
+    cursor.execute(f"")
     count = cursor.fetchone()[0]
     return count == 0
 
 def create_tables():
     """
-    Creates the necessary tables in the flight_management.db database.
-    Exits if tables already exist and contain data.
+    the method in general creates all  the necessary tables in the flight_management.db database  it exits if there is already some data
+    This tables and their keys were determined in the ER diagram
 
-    The tables created are:
+    the tables/instance that are created along with their atributes/columns are as follows:
+    
+    a table destination has the columns destinationID, city, country, airportID
 
-    1. table destination has the columns destinationID, city, country, airportID
+    a aircraft table has the  columns aircraftID, fuelNeed, manufacturer, capacityPersons
 
-    2. aircraft table has the  columns aircraftID, fuelNeed, manufacturer, capacityPersons
+    a pilot tabla with the columns pilotID, firstName, lastName, licenseNumber, seniority, emergencyContact
 
-    3. pilot tabla has the columns pilotID, firstName, lastName, licenseNumber, seniority, emergencyContact
-
-    4. flight table  has the columns flightID, destinationID, aircraftID, pilotID, departureTime, arrivalTime, status
+    a flight table with the columns flightID, destinationID, aircraftID, pilotID, departureTime, arrivalTime, status
     """
     connection = sqlite3.connect("flight_management.db")
     cursor = connection.cursor()
@@ -92,8 +91,7 @@ def create_tables():
 
 def view_tables_and_content():
     """
-    Displays the names of all tables in the database and their content.
-    """
+    the method was created to review the content of the tables    """
     connection = sqlite3.connect("flight_management.db")
     cursor = connection.cursor()
 
@@ -128,8 +126,7 @@ def view_tables_and_content():
 
 def populate_tables():
     """
-    Populates the tables with sample data for testing.
-    Exits if tables already contain data.
+    this function populates the date with some dummy data, according to the instruction it must be 10 at least per table
     """
     connection = sqlite3.connect("flight_management.db")
     cursor = connection.cursor()
