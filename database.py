@@ -68,7 +68,7 @@ def create_tables():
     );
     """)
 
-    # Crear tabla flight
+    # create table flight
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS flight (
         FlightID INTEGER PRIMARY KEY,

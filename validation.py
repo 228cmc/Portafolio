@@ -1,4 +1,6 @@
 def validate_number(prompt):
+    """ this method evaluates a given argument if its a string or not with the method isdigit.
+     it takes a prompt and returns the  integer value if it's correct   otherwise it is in an eternal  """
 
     while True:
         value = input(prompt)

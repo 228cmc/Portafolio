@@ -8,7 +8,9 @@ def main():
     cursor = connection.cursor()
 
     while True:
-        print("flight Management System ---")
+        print("\n")
+
+        print("FLIGHT MANAGEMENT SYSTEM")
         print("1. add a new flight")
         print("2. view flight ")
         print("3. update flight")
