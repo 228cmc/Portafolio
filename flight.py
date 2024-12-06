@@ -2,17 +2,18 @@ from  validation import validate_choice, validate_string, validate_number
 
 def add_flight(cursor):
     """
-    Adds a new flight to the flight table.
-    """
+    the add flight method allows to insert tada to the flight table by asking the input data. 
+    this function use some other methods created in the validation module were if it's an number or string as desired of not
+    or if it's part of the list of predetermined choice    """
 
 
     #firt we ask for the data to add to the table 
     print(" please type the information of the new flight")
-    origin_id = validate_number("type Origin ID: ") 
-    destination_id = validate_number("type destinationID: ")
+    origin_id = validate_number("type origin ID: ") 
+    destination_id = validate_number("type destination ID: ")
     aircraft_id = validate_number("type aircraftID: ")
     pilot_id = validate_number("write PilotID: ")
-    departure_time = input("type Departure Time  with the formatYYYY-MM-DD HH:MM:SS: ")
+    departure_time = input("type Departure time  with the formatYYYY-MM-DD HH:MM:SS: ")
     arrival_time = input("Enter arrival time  with the format YYYY-MM-DD HH:MM:S): ")
     status = validate_choice(["On Time", "Delayed"], "enter flight Status  possible options: On Time, Delayed ")
 
@@ -25,13 +26,13 @@ def add_flight(cursor):
         """, (origin_id, destination_id, aircraft_id, pilot_id, departure_time, arrival_time, status))  # Ajustado
         print("the flight was added")
     except :
-        print("Error adding the flight please review the information")
+        print("error adding the flight please review the information")
 
 
 
 def view_flight_by_criteria(cursor):
     """
-    Retrieves flight based on fixed criteria, including status, departure time range, or destination.
+    allows to access or get some specific  data from the flight table based on specific criteria that includes status, departure time range, or destination.
     """
     print("see flight by criteria")
     print("Leave fields empty if you do not want to filter by that criterion.")
@@ -96,14 +97,14 @@ def view_flight_by_criteria(cursor):
         else:
             print("no flight found matching the criteria")
     except :
-        print("Error with the request")
+        print("error with the request")
 
 
 
 
 def update_flight(cursor):
     """
-    Updates flight information such as departure time or status.
+    the method allows to change or modify the dates flight information such as departure time or status.
     """
     print(" Update flightinfo")
     flight_id = validate_number("type FlightID to update: ")
