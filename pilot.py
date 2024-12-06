@@ -2,16 +2,17 @@ from  validation import validate_choice, validate_string, validate_number
 
 def add_pilot(cursor):
     """
-    adds a new pilot to the db 
-    """
+    adds data to the table pilot.
+    For that it request information such as pilot id, first name, last name, license name, seniority, emergency contact among others
+    this information is validated with some methods of the module validation that checks if its a number and if it's not empty     """
 
-    pilot_id = validate_number("write PilotID: ")
-    pilot_id = validate_number("Enter Pilot ID: ")
-    first_name = validate_string("Enter First Name: ")
-    last_name = validate_string("Enter Last Name: ")
-    license_number = input("Enter License Number: ")
-    seniority = validate_string("Enter Years of Seniority: ")
-    emergency_contact = validate_number("Enter Emergency Contact: ")
+
+    pilot_id = validate_number("writeP pilot ID: ")
+    first_name = validate_string(" write first name: ")
+    last_name = validate_string("write Last Name: ")
+    license_number = input("write License Number: ")
+    seniority = validate_string("write  years of Seniority: ")
+    emergency_contact = validate_number("write emergency Contact: ")
     try:
         
         cursor.execute("""
@@ -24,12 +25,14 @@ def add_pilot(cursor):
 
 
 def assign_pilot_to_flight(cursor):
+
+
     """
-    Assigns a pilot to an existing flight.
-    """
+    asigns a pilot to an existing flight, for that  it modifies the method """
+    
     print("assign Pilot to Flight ")
-    flight_id = validate_number("type FlightID to update: ")
-    pilot_id = validate_number("enter Pilot ID: ")
+    flight_id = validate_number("type flightID to update: ")
+    pilot_id = validate_number("enter pilot ID: ")
 
     try:
         cursor.execute("""

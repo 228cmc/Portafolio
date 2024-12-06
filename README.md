@@ -45,6 +45,9 @@ This project manages a database for handling flights, pilots, aircraft, and dest
 
 Run `database.py`
 
+
+please run this just once and if you want to run it again eliminate the file flight_management.pdb and run it again
+
 - If the tables already exist or are populated, the script will detect this and exit gracefully with messages such as:
    ```
    Tables already exist. Exiting setup.

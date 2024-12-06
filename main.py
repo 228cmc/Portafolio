@@ -4,6 +4,8 @@ from pilot import add_pilot, assign_pilot_to_flight, view_pilot_schedule,delete_
 from destination import manage_destination
 
 def main():
+    """the main function was created to make the connection with the database and the user allowing to interact wit the system
+    """
     connection = sqlite3.connect("flight_management.db")
     cursor = connection.cursor()
 
@@ -16,9 +18,9 @@ def main():
         print("3. update flight")
         print("4. add pilot")
         print("5. assign pilot to flight")
-        print("6. view pilot Schedule")
+        print("6. view pilot schedule")
         print("7. delete information of a pilot")
-        print("8. view/Update destination information")
+        print("8. view/update destination information")
         print("9. quit")
         
         choice = input("pick option: ")
