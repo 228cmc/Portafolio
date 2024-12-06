@@ -1,15 +1,17 @@
+from  validation import validate_choice, validate_string, validate_number
+
 def add_pilot(cursor):
     """
     adds a new pilot to the db 
     """
 
-    pilot_id = input("write PilotID: ")
-    pilot_id = input("Enter Pilot ID: ")
-    first_name = input("Enter First Name: ")
-    last_name = input("Enter Last Name: ")
+    pilot_id = validate_number("write PilotID: ")
+    pilot_id = validate_number("Enter Pilot ID: ")
+    first_name = validate_string("Enter First Name: ")
+    last_name = validate_string("Enter Last Name: ")
     license_number = input("Enter License Number: ")
-    seniority = input("Enter Years of Seniority: ")
-    emergency_contact = input("Enter Emergency Contact: ")
+    seniority = validate_string("Enter Years of Seniority: ")
+    emergency_contact = validate_number("Enter Emergency Contact: ")
     try:
         cursor.execute("""
             INSERT INTO pilot (PilotID, FirstName, LastName, LicenseNumber, Seniority, EmergencyContact)
@@ -25,8 +27,8 @@ def assign_pilot_to_flight(cursor):
     Assigns a pilot to an existing flight.
     """
     print("assign Pilot to Flight ")
-    flight_id = input("enter Flight ID: ")
-    pilot_id = input("enter Pilot ID: ")
+    flight_id = validate_number("type FlightID to update: ")
+    pilot_id = validate_number("enter Pilot ID: ")
 
     try:
         cursor.execute("""
@@ -43,7 +45,7 @@ def view_pilot_schedule(cursor):
     Retrieves the schedule of flight for a specific pilot.
     """
     print(" view Pilot Schedule ")
-    pilot_id = input("enter Pilot ID: ")
+    pilot_id = validate_number("enter Pilot ID: ")
 
     try:
         cursor.execute("""
@@ -68,7 +70,7 @@ def delete_pilot(cursor):
     delete information of a pilot
     """
     print(" write the pilot you want to eliminate")
-    pilot_id = input("enter Pilot ID: ")
+    pilot_id = validate_number("enter Pilot ID: ")
     try:
         cursor.execute(
             """
