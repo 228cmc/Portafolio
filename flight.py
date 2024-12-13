@@ -38,9 +38,9 @@ def view_flight_by_criteria(cursor):
     print("Leave fields empty if you do not want to filter by that criterion.")
 
     # get the data
-    origin_id = validate_number("type Origin ID (or press Enter to continue): ")  
-    destination_id = validate_number("type Destination ID (or press Enter to continue): ")
-    status = validate_choice(["On Time", "Delayed"], "enter flight Status  possible options: On Time, Delayed ")
+    origin_id = input("type Origin ID (or press Enter to continue): ")  
+    destination_id = input("type Destination ID (or press Enter to continue): ")
+    status = input( "enter flight Status  possible options: On Time, Delayed ")
     departure_start = input("type Start of Departure Date Range (YYYY-MM-DD HH:MM:SS) (or press Enter to skip): ")
     departure_end = input("type End of Departure Date Range (YYYY-MM-DD HH:MM:SS) (or press Enter to skip): ")
 
@@ -109,7 +109,7 @@ def update_flight(cursor):
     print(" Update flightinfo")
     flight_id = validate_number("type FlightID to update: ")
     new_departure_time = input("Enter new Departure Time (YYYY-MM-DD HH:MM:SS): ")
-    new_status = validate_choice(["On Time", "Delayed"], "enter flight Status  possible options: On Time, Delayed ")
+    new_status = input(["On Time", "Delayed"], "enter flight Status  possible options: On Time, Delayed ")
 
     try:
         cursor.execute("""
