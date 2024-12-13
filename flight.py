@@ -32,19 +32,21 @@ def add_flight(cursor):
 
 def view_flight_by_criteria(cursor):
     """
-    allows to access or get some specific  data from the flight table based on specific criteria that includes status, departure time range, or destination.
+    get information about  data from the flight table based on criteria such as FlightID, status, 
+    departure time range, or destination.
     """
-    print("see flight by criteria")
+    print("See flight by criteria")
     print("Leave fields empty if you do not want to filter by that criterion.")
 
-    # get the data
-    origin_id = input("type Origin ID (or press Enter to continue): ")  
-    destination_id = input("type Destination ID (or press Enter to continue): ")
-    status = input( "enter flight Status  possible options: On Time, Delayed ")
-    departure_start = input("type Start of Departure Date Range (YYYY-MM-DD HH:MM:SS) (or press Enter to skip): ")
-    departure_end = input("type End of Departure Date Range (YYYY-MM-DD HH:MM:SS) (or press Enter to skip): ")
+    # Get filter inputs
+    flight_id = input("Type Flight ID (or press Enter to skip): ")
+    origin_id = input("Type Origin ID (or press Enter to skip): ")  
+    destination_id = input("Type Destination ID (or press Enter to skip): ")
+    status = input("Enter flight status (On Time, Delayed, or press Enter to skip): ")
+    departure_start = input("Type Start of Departure Date Range (YYYY-MM-DD HH:MM:SS) (or press Enter to skip): ")
+    departure_end = input("Type End of Departure Date Range (YYYY-MM-DD HH:MM:SS) (or press Enter to skip): ")
 
-    # query
+    # query per se 
     query = """
         SELECT flight.FlightID, origin.City AS Origin, destination.City AS Destination,
                aircraft.Manufacturer, aircraft.MaximumSpeed, pilot.FirstName, pilot.LastName,
@@ -54,15 +56,18 @@ def view_flight_by_criteria(cursor):
         JOIN destination AS destination ON flight.DestinationID = destination.DestinationID
         JOIN aircraft ON flight.AircraftID = aircraft.AircraftID
         JOIN pilot ON flight.PilotID = pilot.PilotID
-        WHERE (flight.OriginID = ? OR ? IS NULL)
+        WHERE (flight.FlightID = ? OR ? IS NULL)
+          AND (flight.OriginID = ? OR ? IS NULL)
           AND (flight.DestinationID = ? OR ? IS NULL)
           AND (flight.Status = ? OR ? IS NULL)
           AND (flight.DepartureTime >= ? OR ? IS NULL)
           AND (flight.DepartureTime <= ? OR ? IS NULL)
     """
-    
-    # stablish none  as parameters 
+
+
     params = [
+        flight_id if flight_id else None,
+        flight_id if flight_id else None,
         origin_id if origin_id else None,
         origin_id if origin_id else None,
         destination_id if destination_id else None,
@@ -75,14 +80,14 @@ def view_flight_by_criteria(cursor):
         departure_end if departure_end else None,
     ]
 
-    # Ejecutar consulta
+    # Execute query
     try:
         cursor.execute(query, params)
-        flight = cursor.fetchall()
+        flights = cursor.fetchall()
 
-        if flight:
-            print("\n-flight with the criteria")
-            for flight in flight:
+        if flights:
+            print("\n- Flights matching the criteria:")
+            for flight in flights:
                 print(f"""
                 FlightID: {flight[0]},
                 Origin: {flight[1]},
@@ -95,9 +100,10 @@ def view_flight_by_criteria(cursor):
                 Status: {flight[9]}
                 """)
         else:
-            print("no flight found matching the criteria")
-    except :
-        print("error with the request")
+            print("No flight found matching the criteria.")
+    except Exception as e:
+        print(f"Error with the request: {e}")
+
 
 
 
