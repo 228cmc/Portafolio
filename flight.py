@@ -109,7 +109,7 @@ def update_flight(cursor):
     print(" Update flightinfo")
     flight_id = validate_number("type FlightID to update: ")
     new_departure_time = input("Enter new Departure Time (YYYY-MM-DD HH:MM:SS): ")
-    new_status = input(["On Time", "Delayed"], "enter flight Status  possible options: On Time, Delayed ")
+    new_status = input("enter flight Status  possible options: On Time, Delayed ")
 
     try:
         cursor.execute("""
