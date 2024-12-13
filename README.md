@@ -1,104 +1,71 @@
-
-
-# **Flight Management Database**
-
-## **Overview**
-This project manages a database for handling flights, pilots, aircraft, and destinations. It uses SQLite3 as the database engine and Python for interacting with it.
+here’s the updated readme with the additional instructions about `database.py`:
 
 ---
 
-## **Folder Structure**
+# flight management system
 
-```
-/flight_management_project
-│
-├── database.py         # Main script to create and populate the database
-├── README.md           # Documentation file
-└── flight_management.db # Automatically generated database (after running `database.py`)
-```
+this is a simple system built with python and sqlite to manage flights, pilots, and destinations. it lets you perform basic actions like adding, viewing, and updating information in an easy way.
 
----
+## features
 
-## **Requirements**
-- Python 3.x installed.
-- Standard library `sqlite3` (pre-installed with Python).
+- **add flights**: create a new flight entry.
+- **view flights**: search for flights based on things like origin, destination, status, or departure time.
+- **update flights**: change flight details like status or departure time.
+- **add pilots**: add new pilots to the system.
+- **assign pilots**: link a pilot to a specific flight.
+- **view pilot schedule**: check all flights assigned to a specific pilot.
+- **delete pilots**: remove pilot information and clear their assigned flights.
+- **manage destinations**: update or view details about destinations.
 
----
+## how to set up the database
 
-## **Setup**
+before you can use the system, you need to set up the database.
 
-1. Clone the repository or copy the files to your local machine:
+1. **locate the `database.py` file**:
+   - this script creates the sqlite database and the necessary tables like `flight`, `pilot`, `destination`, and `aircraft`.
+
+2. **run the script**:
+   - open a terminal or command prompt.
+   - navigate to the folder where the project files are saved.
+   - run the script with the command:
+     ```bash
+     python database.py
+     ```
+
+3. **verify the database is created**:
+   - check for the file `flight_management.db` in the project folder.
+   - ensure it contains the required tables created by the script.
+
+4. **run the main program**:
+   - once the database is set up, you don’t need to run `database.py` again unless you want to reset the database.
+
+## how to run
+
+1. make sure you have python installed on your computer.
+2. download or clone the project files.
+3. set up the database (see instructions above).
+4. open a terminal and run:
    ```bash
-   git clone <REPO-URL>
-   cd flight_management_project
+   python main.py
    ```
 
+## how to use
 
+1. start the program and follow the menu on your screen.
+2. choose the action you want by typing the corresponding number.
+3. provide the requested details, like flight info or pilot id.
+4. when you're done, choose option 9 to exit.
 
----
-## **Workflow Explanation**
+## project structure
 
-1. **First:** Run `database.py` to initialize the database and populate it with sample data.
-2. **Next:** Use other scripts to manipulate and query the database as needed (if adding future extensions).
-
-## **Usage**
-
-Run `database.py`
-
-
-please run this just once and if you want to run it again eliminate the file flight_management.pdb and run it again
-
-- If the tables already exist or are populated, the script will detect this and exit gracefully with messages such as:
-   ```
-   Tables already exist. Exiting setup.
-   Tables already populated. Exiting.
-   ```
-
-- At the end of the execution, all tables and their contents will be displayed in the console.
-
----
-
-## module database .py
-
-### 1. **`create_tables()`**
-- **Purpose**: 
-  Creates the required tables (`Destinations`, `Aircrafts`, `Pilots`, `Flights`) in the database.
-- **Details**:
-  - If the tables already exist, the function stops execution and displays: `Tables already exist. Exiting setup.`
-
-### 2. **`populate_tables()`**
-- **Purpose**: 
-  Populates the tables with sample data if they are empty.
-- **Details**:
-  - Checks if the key table (`Destinations`) contains records before populating.
-  - If the tables are already populated, it displays: `Tables already populated. Exiting.`
-
-### 3. **`is_table_empty(cursor, table_name)`**
-- **Purpose**:
-  Verifies whether a specific table is empty.
-- **Usage**:
-  - Called within `populate_tables()` to determine whether data insertion is required.
-
-### 4. **`view_tables_and_content()`**
-- **Purpose**: 
-  Lists all tables in the database and displays their content in the console.
-- **Details**:
-  - Useful for verifying that the tables and data were created correctly.
-
----
+- `main.py`: the main file that runs the system.
+- `flight.py`: handles anything related to flights.
+- `pilot.py`: takes care of pilots and their assignments.
+- `destination.py`: manages destination data.
+- `validation.py`: checks user inputs, like numbers and text.
+- `database.py`: sets up the sqlite database and tables.
+- `flight_management.db`: the sqlite database where data is stored.
 
 
 
 ---
-
-## **Additional Notes**
-- If you need to reset the database, delete the `flight_management.db` file manually and re-run `database.py`.
-
----
-
-## **Contributions**
-To extend this project, you could:
-- Add new tables (e.g., `Airlines` or `Maintenance`).
-- Create an interactive script for dynamic queries.
-- Integrate with external APIs for real-world flight or destination data.
-
