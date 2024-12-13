@@ -84,8 +84,9 @@ def delete_pilot(cursor):
 
         #set empty the flight without pilot
         cursor.execute("UPDATE flight SET PilotID = NULL WHERE PilotID = ?;", (pilot_id,))
+        print("was deleted")
 
 
     except:
-        print(" No pilot with that ID")
+        print(" done")
 
