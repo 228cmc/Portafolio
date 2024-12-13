@@ -14,10 +14,10 @@ def validate_number(prompt):
 
 def validate_string(prompt):
     while True:
-        value = input(prompt)
+        value = input(prompt).strip()
+
         if value.lower() == "exit":
             return None
-        value = input(prompt).strip()
         if value != "":
             return value
         else:
