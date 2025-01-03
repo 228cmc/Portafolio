@@ -1,6 +1,4 @@
-here’s the updated readme with the additional instructions about `database.py`:
 
----
 
 # flight management system
 
