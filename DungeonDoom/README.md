@@ -79,18 +79,7 @@ The game applies object-oriented programming principles by organizing functional
 
 ---
 
-## Features to Improve
 
-1. **Better File Path Handling**  
-   Normalize file paths to support Windows (`\`) and Unix (`/`) systems for compatibility.
-2. **More Gameplay Elements**  
-   - Add traps or power-ups to enhance strategy.
-   - Implement multiple bots for added difficulty.
-   - Allow bots to collect gold.
-3. **Graphical Version**  
-   Replace the text-based interface with a graphical user interface (GUI).
-
----
 
 ## License
 
