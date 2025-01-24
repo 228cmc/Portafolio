@@ -1,4 +1,4 @@
-# Carolina M. Correa
+# Carolina Masmela Correa
 
 **MSc Computer Science Student | Data Scientist**\
 📍 Bath, United Kingdom
