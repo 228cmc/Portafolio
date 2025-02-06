@@ -31,12 +31,18 @@ A system to manage flights, pilots, and destinations using an SQLite database. T
 Python, SQLite  
 
 
+
+
+
 ### **Java: Dungeon of Doom**  
 **Main Idea:**  
 A text-based Java game where players navigate a board to collect gold, avoid a pursuing bot, and escape through an exit.  
 
 **Technologies Used:**  
 Java (object-oriented principles such as encapsulation and inheritance).  
+
+
+
 
 
 ### **Python: Job Scraper**  
@@ -48,12 +54,18 @@ Python, Flask, Selenium.
 
 
 
+
+
+
 ### **Python: Retail KPI Prediction**  
 **Main Idea:**  
 A pipeline designed to predict the revenue of an online retailer based on order, transaction, and report data. This project includes data cleaning, feature engineering, predictive modeling, and results reporting.  
 
 **Technologies Used:**  
 Python, Jupyter Notebooks, scikit-learn, pandas, pytest  
+
+
+
 
 
 
