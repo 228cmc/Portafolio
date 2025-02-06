@@ -57,7 +57,7 @@ Python, Flask, Selenium.
 
 
 
-### **Python: Retail KPI Prediction**  
+### **Project Retail KPI Prediction**  
 **Main Idea:**  
 A pipeline designed to predict the revenue of an online retailer based on order, transaction, and report data. This project includes data cleaning, feature engineering, predictive modeling, and results reporting.  
 
