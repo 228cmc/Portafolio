@@ -23,7 +23,7 @@ Throughout my career, I have worked on diverse projects involving AI, data analy
 
 ## Projects  
 
-### **Python: Flight Management System**  
+### **Project Flight Management System**  
 **Main Idea:**  
 A system to manage flights, pilots, and destinations using an SQLite database. This project enhances flight planning and organization by efficiently assigning pilots to flights.  
 
@@ -34,7 +34,7 @@ Python, SQLite
 
 
 
-### **Java: Dungeon of Doom**  
+### **Project Dungeon of Doom Game **  
 **Main Idea:**  
 A text-based Java game where players navigate a board to collect gold, avoid a pursuing bot, and escape through an exit.  
 
@@ -45,7 +45,7 @@ Java (object-oriented principles such as encapsulation and inheritance).
 
 
 
-### **Python: Job Scraper**  
+### **Project Job Scraper **  
 **Main Idea:**  
 A project to scrape job postings using Selenium from  the university website and dynamically display them through a Flask web application, or csv storage.
 
