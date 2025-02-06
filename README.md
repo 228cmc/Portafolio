@@ -1,6 +1,6 @@
 # Carolina Masmela Correa  
 **MSc Computer Science Student | Data Scientist**  
-📍 Bath, United Kingdom  
+ Bath, United Kingdom  
 
 ## About Me  
 I am a passionate MSc Computer Science student and data scientist focused on solving complex problems and creating impactful solutions through programming and data analysis. My background in Earth Sciences, combined with my expertise in software development, provides a unique perspective for tackling multidisciplinary challenges.  
