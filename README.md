@@ -3,9 +3,7 @@
  Bath, United Kingdom  
 
 ## About Me  
-I am a passionate MSc Computer Science student and data scientist focused on solving complex problems and creating impactful solutions through programming and data analysis. My background in Earth Sciences, combined with my expertise in software development, provides a unique perspective for tackling multidisciplinary challenges.  
-
-Throughout my career, I have worked on diverse projects involving AI, data analysis, and software development, leveraging technologies such as Python, Java, SQL, and C. My portfolio reflects both my technical proficiency and my commitment to continuous learning and growth in the tech industry.  
+MSc Computer Science student and data scientist passionate about solving problems through programming and data analysis. This repository showcases some of my personal and academic projects in data science, software development, and automation.
 
 
 ## Core Skills  
