@@ -19,7 +19,7 @@ MSc Computer Science student and data scientist passionate about solving problem
 
 
 
-## Projects  
+## Projects  🌌 
 
 ### **Project Flight Management System**  
 **Main Idea:**  
