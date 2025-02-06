@@ -34,7 +34,7 @@ Python, SQLite
 
 
 
-### **Project Dungeon of Doom Game **  
+### **Project Dungeon of Doom Game**  
 **Main Idea:**  
 A text-based Java game where players navigate a board to collect gold, avoid a pursuing bot, and escape through an exit.  
 
@@ -45,7 +45,7 @@ Java (object-oriented principles such as encapsulation and inheritance).
 
 
 
-### **Project Job Scraper **  
+### **Project Job Scraper**  
 **Main Idea:**  
 A project to scrape job postings using Selenium from  the university website and dynamically display them through a Flask web application, or csv storage.
 
