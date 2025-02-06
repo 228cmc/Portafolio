@@ -41,10 +41,10 @@ Java (object-oriented principles such as encapsulation and inheritance).
 
 ### **Python: Job Scraper**  
 **Main Idea:**  
-A project to scrape job postings from multiple websites and dynamically display them through a Flask web application.  
+A project to scrape job postings using Selenium from  the university website and dynamically display them through a Flask web application, or csv storage.
 
 **Technologies Used:**  
-Python, Flask, Jinja2  
+Python, Flask, Selenium.
 
 
 
