@@ -1,25 +1,7 @@
-# Carolina Masmela Correa  
-MSc Computer Science Student | Data Scientist
-Bath, United Kingdom
-
-## About Me ⚡
-MSc Computer Science student and data scientist passionate about solving problems through programming and data analysis. This repository showcases some of my personal and academic projects in data science, software development, and automation.
 
 
-## Core Skills  
-- **Programming Languages:** Python, Java, SQL, C  
-- **Databases:** SQLite, MySQL  
-- **Frameworks and Tools:** Flask, Jupyter Notebooks, Git  
-- **Software Development:** Object-Oriented Programming, Data Structures, Algorithms  
-- **Additional Expertise:**  
-  - **Data Analysis:** Statistical Modeling, Data Visualization  
-  - **Machine Learning:** Regression, Classification, Clustering  
-  - **Cloud Services:** AWS, Docker  
-  - **Agile Practices:** Scrum, CI/CD  
-
-
-
-## Projects  🌌 
+## Project Compilation 🌌 
+A little mix of side  things I’ve worked on: some coding, some scraping, some predicting, and even a bit of gaming.
 
 ### **Project Flight Management System**  
 **Main Idea:**  
