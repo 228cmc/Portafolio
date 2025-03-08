@@ -45,11 +45,3 @@ A pipeline designed to predict the revenue of an online retailer based on order,
 Python, Jupyter Notebooks, scikit-learn, pandas, pytest  
 
 
-
-
-
-
-## Contact  
-📧 Email: cmc228@bath.ac.uk  
-🔗 LinkedIn: [Carolina Masmela Correa](https://www.linkedin.com/in/carolina-masmela-correa/)  
-💻 GitHub: [228cmc](https://github.com/228cmc) | [cmc228](https://github.com/cmc228)  
