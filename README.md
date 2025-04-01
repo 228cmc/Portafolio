@@ -31,7 +31,6 @@ A project to scrape job postings using Selenium from  the university website and
 **Technologies Used:**  
 Python, Flask, Selenium.
 
-# Project Portfolio
 
 ## Sudoku Solver  
 **Main Idea:**  
