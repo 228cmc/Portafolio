@@ -24,7 +24,6 @@ Java (object-oriented principles such as encapsulation and inheritance).
 
 
 
-
 ### **Project Job Scraper**  
 **Main Idea:**  
 A project to scrape job postings using Selenium from  the university website and dynamically display them through a Flask web application, or csv storage.
@@ -32,6 +31,31 @@ A project to scrape job postings using Selenium from  the university website and
 **Technologies Used:**  
 Python, Flask, Selenium.
 
+# Project Portfolio
+
+## Sudoku Solver  
+**Main Idea:**  
+An agent that solves Sudoku puzzles of varying difficulty using backtracking and constraint checking. It validates inputs and works with automated evaluation scripts.  
+**Technologies:**  
+Python, NumPy, Jupyter
+
+
+
+## Racetrack Reinforcement Learning  
+**Main Idea:**  
+Tabular RL agents (Monte Carlo, Sarsa, Q-Learning) are benchmarked in a stochastic racetrack simulation. Includes a modified TD agent and visual tools for performance analysis.  
+**Technologies:**  
+Python, Jupyter
+
+
+
+
+
+## Bayesian Linear Regression with Decision Abstention  
+**Main Idea:**  
+Bayesian linear regression with uncertainty-aware abstention to optimize reward. Uses marginal likelihood, dynamic thresholds, and visualizations of abstention zones.  
+**Technologies:**  
+Python, NumPy, Jupyter
 
 
 
